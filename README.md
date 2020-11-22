@@ -1,5 +1,12 @@
 # employee-tracker
 
+NOTES/QUESTIONS
+mysql standalone - mysql2 connection to vscode
+
+mysql connection - where to place it?  currently in database.js
+
+npm i node - where would the package.json file come from?
+
 AS A business owner
 I WANT to be able to view and manage the departments, roles, and employees in my company
 SO THAT I can organize and plan my business
