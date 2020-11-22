@@ -1,6 +1,10 @@
 # employee-tracker
 
 NOTES/QUESTIONS
+
+important: npm init -y --- this will set up npm
+run: node <filename>
+
 where is my database file location?
 
 what npm packages were able to acommodate both lite and mysql?/

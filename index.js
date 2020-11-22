@@ -1,11 +1,9 @@
-/* Need to rethink set up, do not need to have an actual server
-or web application for this one */
-
 //NPM package constants
 const express = require("express");
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 const cTable = require("console.table");
+const { exit } = require("process");
 
 //prompts for choice menu, add more questions here
 //https://www.digitalocean.com/community/tutorials/nodejs-interactive-command-line-prompts
@@ -43,34 +41,57 @@ inquirer.prompt([
                 name: "Update an Employee Role",
                 value: "updateAnEmployeeRole"
             },
+            {
+                name: "Exit",
+                value: "exit"
+            },
         ]
     }
-])
+]).then(res => {
+    //link response to the respective function
+    switch(res) {
+        case "viewAllDepartments":
+            viewAllDepartments();
+            break;
+        case "viewAllRoles":
+            viewAllRoles();
+            break;
+        case "viewAllEmployees":
+            viewAllEmployees();
+            break;
+        case "addADepartment":
+            addADepartment();
+            break;
+        case "addARole":
+            addARole();
+            break;
+        case "addAnEmployee":
+            addAnEmployee();
+            break;
+        case "updateAnEmployeeRole":
+            updateAnEmployeeRole();
+            break;
+        default:
+            quit();
+    }
+});
 
 /*
-//Import from database.js
-const db = require("./db/database");
+function viewAllDepartments();
 
-const PORT = process.env.PORT || 3007;
-const app = express();
+function viewAllRoles();
 
-const apiRoutes = require("./routes/apiRoutes");
+function viewAllEmployees();
 
-//Express middleware
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
+function addADepartment();
 
-//Use api routes
-app.use("/api", apiRoutes);
+function addARole();
 
-//Default response for any other request (Not Found) catch all
-app.use((req, res) => {
-    res.status(404).end();
-});
+function addAnEmployee();
 
-db.on("open", () => {
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
-});
+function updateAnEmployeeRole();
 */
+function quit() {
+    console.log("Exiting...");
+    process.exit;
+};
