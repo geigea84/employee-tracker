@@ -1,11 +1,19 @@
 # employee-tracker
 
 NOTES/QUESTIONS
+where is my database file location?
+
+what npm packages were able to acommodate both lite and mysql?/
+what do we need to use?
+
 mysql standalone - mysql2 connection to vscode
 
 mysql connection - where to place it?  currently in database.js
 
-npm i node - where would the package.json file come from?
+npm i node - where would the package.json file come from?  what's
+the difference between package and package-lock?
+
+======================================================================
 
 AS A business owner
 I WANT to be able to view and manage the departments, roles, and employees in my company

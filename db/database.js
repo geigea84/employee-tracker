@@ -1,3 +1,5 @@
+//update: may not need this file, see index.js
+
 //get the client (here and server.js?  or just import to server?
 //or connect to queries?)
 const mysql = require("mysql2");
