@@ -2,20 +2,16 @@
 
 NOTES/QUESTIONS
 
-important: npm init -y --- this will set up npm
+important: npm init -y --- this will set up npm (and include package.json)
 run: node <filename>
 
 where is my database file location?
 
-what npm packages were able to acommodate both lite and mysql?/
-what do we need to use?
+use jquery? multi js files require and reference on either end must import argument into function and module.export function
+
+check mysql2 documentation for async functions
 
 mysql standalone - mysql2 connection to vscode
-
-mysql connection - where to place it?  currently in database.js
-
-npm i node - where would the package.json file come from?  what's
-the difference between package and package-lock?
 
 ======================================================================
 

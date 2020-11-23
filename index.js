@@ -3,9 +3,21 @@ const express = require("express");
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 const cTable = require("console.table");
+const dotenv = require("dotenv").config();
+
+//connect files from db/connection.js
+const db = require("./db/connection");
+
+//object destructuring
 const { exit } = require("process");
 
+
+
+//mysql -u root -p (.env) necessary here?
+
+
 //prompts for choice menu, add more questions here
+//for reference:
 //https://www.digitalocean.com/community/tutorials/nodejs-interactive-command-line-prompts
 inquirer.prompt([
     {
@@ -76,21 +88,46 @@ inquirer.prompt([
     }
 });
 
+
+//view department names and department ids
+function viewAllDepartments() {
+    db.getAllDepartments()
+        .then(([rows]) => {
+            let departments = rows;
+            console.log("\n");
+            console.log(departments);
+        })
+        .then(() => inquirer.prompt());
+};
+
 /*
-function viewAllDepartments();
+//view job title, role id, corresponding department, salary
+function viewAllRoles() {
 
-function viewAllRoles();
+};
 
+
+/*
+//view employee ids, first names, last names, job titles, 
+//departments, salaries, and managers
 function viewAllEmployees();
 
+//prompted to enter name of new department and add to db
 function addADepartment();
 
+//prompted to enter name, salary, and department of new role
+//and add to db
 function addARole();
 
+//prompted to enter first name, last name, role, manager
+//and add to db
 function addAnEmployee();
 
+//prompted to select an employee to update
+//and add to db
 function updateAnEmployeeRole();
 */
+
 function quit() {
     console.log("Exiting...");
     process.exit;
