@@ -9,6 +9,10 @@ where is my database file location?
 
 use jquery? multi js files require and reference on either end must import argument into function and module.export function
 
+//***WARNING*** git bash is not currently happy with this const
+//const db = require("./db/connection");
+causes bash to auto exit when running node index (cursor also disappears)
+
 check mysql2 documentation for async functions
 
 mysql standalone - mysql2 connection to vscode

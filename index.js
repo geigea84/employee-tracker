@@ -6,7 +6,9 @@ const cTable = require("console.table");
 const dotenv = require("dotenv").config();
 
 //connect files from db/connection.js
-const db = require("./db/connection");
+
+//***WARNING*** git bash is not currently happy with this const
+//const db = require("./db/connection");
 
 //object destructuring
 const { exit } = require("process");
@@ -19,76 +21,82 @@ const { exit } = require("process");
 //prompts for choice menu, add more questions here
 //for reference:
 //https://www.digitalocean.com/community/tutorials/nodejs-interactive-command-line-prompts
-inquirer.prompt([
-    {
-        type: "list",
-        name: "prompts",
-        message: "What would you like to do?",
-        choices:[
-            {
-                name: "View All Departments",
-                value: "viewAllDepartments"
-            },
-            {
-                name: "View All Roles",
-                value: "viewAllRoles"
-            },
-            {
-                name: "View All Employees",
-                value: "viewAllEmployees"
-            },
-            {
-                name: "Add a Department",
-                value: "addADepartment"
-            },
-            {
-                name: "Add a Role",
-                value: "addARole"
-            },
-            {
-                name: "Add an Employee",
-                value: "addAnEmployee"
-            },
-            {
-                name: "Update an Employee Role",
-                value: "updateAnEmployeeRole"
-            },
-            {
-                name: "Exit",
-                value: "exit"
-            },
-        ]
-    }
-]).then(res => {
-    //link response to the respective function
-    switch(res) {
-        case "viewAllDepartments":
-            viewAllDepartments();
-            break;
-        case "viewAllRoles":
-            viewAllRoles();
-            break;
-        case "viewAllEmployees":
-            viewAllEmployees();
-            break;
-        case "addADepartment":
-            addADepartment();
-            break;
-        case "addARole":
-            addARole();
-            break;
-        case "addAnEmployee":
-            addAnEmployee();
-            break;
-        case "updateAnEmployeeRole":
-            updateAnEmployeeRole();
-            break;
-        default:
-            quit();
-    }
-});
+
+runPrompts();
+
+function runPrompts() {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "prompts",
+            message: "What would you like to do?",
+            choices:[
+                {
+                    name: "View All Departments",
+                    value: "viewAllDepartments"
+                },
+                {
+                    name: "View All Roles",
+                    value: "viewAllRoles"
+                },
+                {
+                    name: "View All Employees",
+                    value: "viewAllEmployees"
+                },
+                {
+                    name: "Add a Department",
+                    value: "addADepartment"
+                },
+                {
+                    name: "Add a Role",
+                    value: "addARole"
+                },
+                {
+                    name: "Add an Employee",
+                    value: "addAnEmployee"
+                },
+                {
+                    name: "Update an Employee Role",
+                    value: "updateAnEmployeeRole"
+                },
+                {
+                    name: "Exit",
+                    value: "exit"
+                },
+            ]
+        }
+    ]).then(res => {
+        //link response to the respective function
+        switch(res) {
+            case "viewAllDepartments":
+                viewAllDepartments();
+                break;
+            case "viewAllRoles":
+                viewAllRoles();
+                break;
+            case "viewAllEmployees":
+                viewAllEmployees();
+                break;
+            case "addADepartment":
+                addADepartment();
+                break;
+            case "addARole":
+                addARole();
+                break;
+            case "addAnEmployee":
+                addAnEmployee();
+                break;
+            case "updateAnEmployeeRole":
+                updateAnEmployeeRole();
+                break;
+            default:
+                quit();
+        }
+    });
+};
 
 
+/*
 //view department names and department ids
 function viewAllDepartments() {
     db.getAllDepartments()
@@ -97,7 +105,7 @@ function viewAllDepartments() {
             console.log("\n");
             console.log(departments);
         })
-        .then(() => inquirer.prompt());
+        //.then(() => runPrompts());
 };
 
 /*
